@@ -1,0 +1,43 @@
+html,
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  right: 0;
+  bottom: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.display-character {
+  height: 3rem;
+  width: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.suggestion-hidden {
+  position: relative;
+}
+.suggestion-hidden > span {
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+  opacity: 0.5;
+}
+.suggestion-hidden::before {
+  content: "Need a suggestion?";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: visible;
+  white-space: nowrap;
+  text-shadow: #000 0 0.5rem 0.5rem;
+}
