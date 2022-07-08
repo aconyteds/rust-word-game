@@ -25,9 +25,17 @@ pub fn character(
         }
     });
 
+    let double_class = use_state(|| {
+        if feedback.possible_double && feedback.in_correct_location {
+            return "double";
+        } else {
+            return "";
+        }
+    });
+
     html! {
       <>
-        <div class={format!("col-auto border m-1 border-1 border-light {}", *text_color)}>
+        <div class={format!("col-auto border m-1 border-1 border-light {} {}", *text_color, *double_class)}>
             <span class="display-character">{character.to_uppercase()}</span>
         </div>
       </>

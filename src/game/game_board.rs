@@ -85,6 +85,7 @@ pub fn game_board(
     let victory = use_state(|| false);
     let submittable = use_state(|| false);
     let suggestion = use_state(|| "".to_string());
+    let suggestion_accuracy = use_state::<f32, _>(|| 0 as f32);
     // create a stateful variable that is a vector of vectors
     let game_logic = use_reducer(GameState::default);
     let max_length = 5;
@@ -188,9 +189,11 @@ pub fn game_board(
         {
             let guesses = game_logic.guesses.clone();
             let suggestion = suggestion.clone();
+            let suggestion_accuracy = suggestion_accuracy.clone();
             move |_| {
-                let new_suggestion = create_suggestion(&guesses);
+                let (new_suggestion, percentage) = create_suggestion(&guesses);
                 suggestion.set(new_suggestion);
+                suggestion_accuracy.set(percentage);
                 || ()
             }
         },
@@ -238,7 +241,7 @@ pub fn game_board(
         //   <div class="col-auto">{ &*current_guess.to_string() }</div>
         // </div>
         {if !*game_over {
-          html!{<Suggestion suggestion={format!("{}", *suggestion)} />}
+          html!{<Suggestion suggestion={format!("{}", *suggestion)} accuracy={*suggestion_accuracy} />}
         } else { html!{""}}}
           <div class="row mt-2 mb-2 justify-content-center">
           {if !*game_over {

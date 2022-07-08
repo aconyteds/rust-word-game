@@ -15,6 +15,10 @@ body {
   cursor: pointer !important;
 }
 
+.double .display-character {
+  text-decoration: underline;
+}
+
 .display-character {
   height: 3rem;
   width: 2.5rem;

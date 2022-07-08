@@ -18,6 +18,7 @@ pub struct Feedback {
     pub letter: char,
     pub in_word: bool,
     pub in_correct_location: bool,
+    pub possible_double: bool,
 }
 
 #[derive(PartialEq, Clone)]

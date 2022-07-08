@@ -3,10 +3,16 @@ use yew::{function_component, html, use_effect_with_deps, use_state, Properties}
 #[derive(Properties, PartialEq)]
 pub struct SuggestionProps {
     pub suggestion: String,
+    pub accuracy: f32,
 }
 
 #[function_component(Suggestion)]
-pub fn suggestion(SuggestionProps { suggestion }: &SuggestionProps) -> Html {
+pub fn suggestion(
+    SuggestionProps {
+        suggestion,
+        accuracy,
+    }: &SuggestionProps,
+) -> Html {
     // use_state for tracking whether the suggestion is visible or obscured
     let is_visible = use_state(|| false);
     // use_state for tracking the class on the suggestion div
@@ -52,7 +58,7 @@ pub fn suggestion(SuggestionProps { suggestion }: &SuggestionProps) -> Html {
         <>
             <div class="row justify-content-center mt-2 mb-2 cursor-pointer" onclick={toggle_visibility}>
               <div class="col-auto">
-                <h5 class={*class_name}><span>{ &*suggestion.to_uppercase() }</span></h5>
+                <h5 class={*class_name}><span>{ &*suggestion.to_uppercase() }<small class="ps-2 text-muted">{format!("{:.2}%", *accuracy)}</small></span></h5>
               </div>
             </div>
         </>
