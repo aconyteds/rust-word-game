@@ -27,7 +27,7 @@ pub fn pick_word() -> String {
     WORDS[random_index].to_string()
 }
 
-pub fn get_doubles(stored_word: &str) -> Vec<char> {
+fn get_doubles(stored_word: &str) -> Vec<char> {
     // Method to return a vector of letters which occur more than once in stored_word
     let mut doubles: Vec<char> = Vec::new();
     let mut chars: Vec<char> = stored_word.chars().collect();
@@ -87,80 +87,3 @@ pub fn create_suggestion(guesses: &Vec<Guess>) -> (String, f32) {
         ((1 as f32 / filter_length) * 100 as f32) as f32,
     )
 }
-
-// fn display_result(input: &str, feedback: &Vec<Feedback>) -> bool {
-//     // if all items in_correct_location is true, then the user won!
-//     let mut user_won = true;
-//     for f in feedback {
-//         if !f.in_correct_location {
-//             user_won = false;
-//         }
-//     }
-//     if user_won {
-//         println!(
-//             "{} is correct! You won!",
-//             format!("{}", input).green().bold()
-//         );
-//         return true;
-//     }
-//     // if in_correct_location is true, letter should be green
-//     // if in_word is true, letter should be yellow
-//     fn format_letter(f: &Feedback) -> ColoredString {
-//         if f.in_correct_location {
-//             format!("{}", f.letter).green()
-//         } else if f.in_word {
-//             format!("{}", f.letter).yellow()
-//         } else {
-//             format!("{}", f.letter).red()
-//         }
-//     }
-
-//     println!(
-//         "{}{}{}{}{}",
-//         format_letter(&feedback[0]),
-//         format_letter(&feedback[1]),
-//         format_letter(&feedback[2]),
-//         format_letter(&feedback[3]),
-//         format_letter(&feedback[4])
-//     );
-//     false
-// }
-
-// fn game() {
-//     println!("Welcome to the word game!");
-//     loop {
-//         // pick a random word
-//         let word = pick_word();
-//         println!("Your word has been chosen. Please enter a 5 letter word.");
-//         loop {
-//             let mut input = String::new();
-//             io::stdin()
-//                 .read_line(&mut input)
-//                 .expect("Failed to read line");
-
-//             // trim the input
-//             input = input.trim().to_string();
-
-//             if input.len() != 5 {
-//                 println!("Please enter a 5 letter word.");
-//             } else {
-//                 // check the input for correctness
-//                 let feedback = compare_input(&input, &word);
-//                 let won = display_result(&input, &feedback);
-//                 if won {
-//                     break;
-//                 }
-//             }
-//         }
-//         // Ask if the user wants to play again
-//         println!("Would you like to play again? (y/n)");
-//         let mut input = String::new();
-//         io::stdin()
-//             .read_line(&mut input)
-//             .expect("Failed to read line");
-//         if input.trim() == "n" {
-//             println!("Thanks for playing!");
-//             break;
-//         }
-//     }
-// }

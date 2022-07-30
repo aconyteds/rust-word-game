@@ -1,11 +1,13 @@
 mod character_display;
 mod game_board;
-mod logic;
+pub mod logic;
 mod main_menu;
 mod suggestion;
 use crate::game::game_board::GameBoard;
 use crate::game::main_menu::MainMenu;
+use serde::{Deserialize, Serialize};
 use yew::prelude::*;
+
 #[derive(PartialEq, Copy, Clone)]
 pub enum GameDifficulty {
     Easy,
@@ -13,7 +15,7 @@ pub enum GameDifficulty {
     Hard,
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub struct Feedback {
     pub letter: char,
     pub in_word: bool,
@@ -21,10 +23,10 @@ pub struct Feedback {
     pub possible_double: bool,
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub struct Guess {
-    word: String,
-    feedback: Vec<Feedback>,
+    pub(crate) word: String,
+    pub(crate) feedback: Vec<Feedback>,
 }
 
 #[function_component(Game)]
