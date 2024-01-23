@@ -3,6 +3,7 @@ mod game_board;
 pub mod logic;
 mod main_menu;
 mod suggestion;
+mod words;
 use crate::game::game_board::GameBoard;
 use crate::game::main_menu::MainMenu;
 use serde::{Deserialize, Serialize};

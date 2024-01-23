@@ -9,18 +9,17 @@
 // use std::io;
 
 // use colored::{ColoredString, Colorize};
-
-use super::{Feedback, Guess};
+use super::{words::WORDS, Feedback, Guess};
 use rand::Rng;
-const WORDS: [&str; 55] = [
-    "apple", "cargo", "fishy", "grape", "honey", "juice", "lemon", "mango", "peach", "shell",
-    "piece", "owned", "pepsi", "peace", "grand", "queen", "large", "screw", "taken", "shame",
-    "beard", "knave", "upset", "orbit", "moxie", "skunk", "grove", "stain", "swing", "snail",
-    "prime", "rally", "devil", "jesus", "haire", "drift", "crazy", "cloud", "snarl", "force",
-    "greet", "crowd", "mourn", "chant", "retch", "equal", "inlay", "favor", "grace", "march",
-    "surge", "buggy", "poppy", "kevin", "sleep",
-];
 
+// const WORDS: [&str; 55] = [
+//     "apple", "cargo", "fishy", "grape", "honey", "juice", "lemon", "mango", "peach", "shell",
+//     "piece", "owned", "pepsi", "peace", "grand", "queen", "large", "screw", "taken", "shame",
+//     "beard", "knave", "upset", "orbit", "moxie", "skunk", "grove", "stain", "swing", "snail",
+//     "prime", "rally", "devil", "jesus", "haire", "drift", "crazy", "cloud", "snarl", "force",
+//     "greet", "crowd", "mourn", "chant", "retch", "equal", "inlay", "favor", "grace", "march",
+//     "surge", "buggy", "poppy", "kevin", "sleep",
+// ];
 pub fn pick_word() -> String {
     let mut rng = rand::thread_rng();
     let random_index = rng.gen_range(0..WORDS.len());
