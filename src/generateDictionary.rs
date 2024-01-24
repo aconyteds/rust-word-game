@@ -13,7 +13,7 @@ fn main() -> io::Result<()> {
         let line = line?;
         let line = line.trim();
         if line.len() == 5 {
-            words.push(line.to_string());
+            words.push(line.to_string().to_lowercase());
         }
     }
 
